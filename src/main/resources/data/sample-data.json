@@ -1,0 +1,171 @@
+{
+  "users": [
+    {
+      "email": "admin@fooddelivery.com",
+      "password": "admin123",
+      "name": "System Administrator",
+      "role": "ADMIN",
+      "blocked": false
+    },
+    {
+      "email": "customer@example.com",
+      "password": "password123",
+      "name": "John Customer",
+      "role": "CUSTOMER",
+      "blocked": false
+    },
+    {
+      "email": "owner@example.com",
+      "password": "password123",
+      "name": "Jane Restaurant Owner",
+      "role": "OWNER",
+      "blocked": false
+    },
+    {
+      "email": "customer2@example.com",
+      "password": "password123",
+      "name": "Alice Customer",
+      "role": "CUSTOMER",
+      "blocked": false
+    },
+    {
+      "email": "owner2@example.com",
+      "password": "password123",
+      "name": "Bob Restaurant Owner",
+      "role": "OWNER",
+      "blocked": false
+    }
+  ],
+  "restaurants": [
+    {
+      "name": "Mama Mia Italian",
+      "description": "Authentic Italian cuisine with fresh ingredients and traditional recipes",
+      "blocked": false,
+      "ownerEmail": "owner@example.com"
+    },
+    {
+      "name": "Golden Dragon Chinese",
+      "description": "Traditional Chinese dishes with modern twists and authentic flavors",
+      "blocked": false,
+      "ownerEmail": "owner@example.com"
+    },
+    {
+      "name": "Burger Palace",
+      "description": "Gourmet burgers and American classics",
+      "blocked": false,
+      "ownerEmail": "owner2@example.com"
+    },
+    {
+      "name": "Sushi Master",
+      "description": "Fresh sushi and Japanese cuisine",
+      "blocked": false,
+      "ownerEmail": "owner2@example.com"
+    }
+  ],
+  "meals": [
+    {
+      "name": "Margherita Pizza",
+      "description": "Classic pizza with tomato sauce, mozzarella, and basil",
+      "price": 18.99,
+      "restaurantName": "Mama Mia Italian"
+    },
+    {
+      "name": "Spaghetti Carbonara",
+      "description": "Pasta with eggs, cheese, pancetta, and black pepper",
+      "price": 16.99,
+      "restaurantName": "Mama Mia Italian"
+    },
+    {
+      "name": "Tiramisu",
+      "description": "Classic Italian dessert with coffee and mascarpone",
+      "price": 8.99,
+      "restaurantName": "Mama Mia Italian"
+    },
+    {
+      "name": "Caesar Salad",
+      "description": "Fresh romaine lettuce with Caesar dressing and croutons",
+      "price": 12.99,
+      "restaurantName": "Mama Mia Italian"
+    },
+    {
+      "name": "Kung Pao Chicken",
+      "description": "Spicy diced chicken with peanuts and vegetables",
+      "price": 15.99,
+      "restaurantName": "Golden Dragon Chinese"
+    },
+    {
+      "name": "Sweet and Sour Pork",
+      "description": "Crispy pork with tangy sweet and sour sauce",
+      "price": 14.99,
+      "restaurantName": "Golden Dragon Chinese"
+    },
+    {
+      "name": "Fried Rice",
+      "description": "Classic fried rice with eggs and vegetables",
+      "price": 9.99,
+      "restaurantName": "Golden Dragon Chinese"
+    },
+    {
+      "name": "Wonton Soup",
+      "description": "Clear soup with pork and shrimp wontons",
+      "price": 11.99,
+      "restaurantName": "Golden Dragon Chinese"
+    },
+    {
+      "name": "Classic Cheeseburger",
+      "description": "Juicy beef patty with cheese, lettuce, tomato, and special sauce",
+      "price": 13.99,
+      "restaurantName": "Burger Palace"
+    },
+    {
+      "name": "Bacon Deluxe Burger",
+      "description": "Premium burger with bacon, cheddar, and caramelized onions",
+      "price": 16.99,
+      "restaurantName": "Burger Palace"
+    },
+    {
+      "name": "California Roll",
+      "description": "Avocado, cucumber, and crab with rice and nori",
+      "price": 12.99,
+      "restaurantName": "Sushi Master"
+    },
+    {
+      "name": "Salmon Nigiri",
+      "description": "Fresh salmon over seasoned rice",
+      "price": 8.99,
+      "restaurantName": "Sushi Master"
+    }
+  ],
+  "coupons": [
+    {
+      "code": "WELCOME20",
+      "discountPercent": 20,
+      "expiresAt": "2024-12-31T23:59:59",
+      "active": true
+    },
+    {
+      "code": "FIRSTORDER",
+      "discountPercent": 15,
+      "expiresAt": "2024-12-31T23:59:59",
+      "active": true
+    },
+    {
+      "code": "LOYALTY10",
+      "discountPercent": 10,
+      "expiresAt": "2024-12-31T23:59:59",
+      "active": true
+    },
+    {
+      "code": "FLASH25",
+      "discountPercent": 25,
+      "expiresAt": "2024-12-31T23:59:59",
+      "active": true
+    },
+    {
+      "code": "SUMMER30",
+      "discountPercent": 30,
+      "expiresAt": "2024-08-31T23:59:59",
+      "active": true
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "admin-restaurant-controller-collection",
+		"name": "Admin Restaurant Controller",
+		"description": "API collection for Admin Restaurant management endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "adminToken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "restaurantId",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Get All Restaurants (Admin)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{adminToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/admin/restaurants/get?page=0&size=10&sort=name&direction=asc",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "admin", "restaurants", "get"],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						},
+						{
+							"key": "sort",
+							"value": "name"
+						},
+						{
+							"key": "direction",
+							"value": "asc"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Block Restaurant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{adminToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/admin/restaurants/create/block/{{restaurantId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "admin", "restaurants", "create", "block", "{{restaurantId}}"]
+				}
+			}
+		},
+		{
+			"name": "Unblock Restaurant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{adminToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/admin/restaurants/create/unblock/{{restaurantId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "admin", "restaurants", "create", "unblock", "{{restaurantId}}"]
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "meal-controller-collection",
+		"name": "Meal Controller",
+		"description": "API collection for Meal management endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "ownerToken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "restaurantId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "mealId",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Get Meals by Restaurant - Basic",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/meals/get/restaurant/{{restaurantId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "meals", "get", "restaurant", "{{restaurantId}}"]
+				}
+			}
+		},
+		{
+			"name": "Get Meals by Restaurant - With Pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/meals/get/restaurant/{{restaurantId}}?page=0&size=5",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "meals", "get", "restaurant", "{{restaurantId}}"],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "5"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Search Meals by Restaurant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/meals/search/restaurant/{{restaurantId}}?q=pizza&page=0&size=10",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "meals", "search", "restaurant", "{{restaurantId}}"],
+					"query": [
+						{
+							"key": "q",
+							"value": "pizza"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Get Meals by Price Range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/meals/price-range/restaurant/{{restaurantId}}?minPrice=10.00&maxPrice=20.00&page=0&size=10",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "meals", "price-range", "restaurant", "{{restaurantId}}"],
+					"query": [
+						{
+							"key": "minPrice",
+							"value": "10.00"
+						},
+						{
+							"key": "maxPrice",
+							"value": "20.00"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Get Meal by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/meals/get/{{mealId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "meals", "get", "{{mealId}}"]
+				}
+			}
+		},
+		{
+			"name": "Create Meal",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ownerToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"New Meal\",\n  \"description\": \"A delicious new meal\",\n  \"price\": 15.99\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/meals/create/restaurant/{{restaurantId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "meals", "create", "restaurant", "{{restaurantId}}"]
+				}
+			}
+		},
+		{
+			"name": "Update Meal",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ownerToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Updated Meal Name\",\n  \"description\": \"Updated meal description\",\n  \"price\": 18.99\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/meals/edit/{{mealId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "meals", "edit", "{{mealId}}"]
+				}
+			}
+		},
+		{
+			"name": "Delete Meal",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ownerToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/meals/delete/{{mealId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "meals", "delete", "{{mealId}}"]
+				}
+			}
+		}
+	]
+}

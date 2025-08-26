@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "owner-block-controller-collection",
+		"name": "Owner Block Controller",
+		"description": "API collection for Owner Block management endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "ownerToken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "restaurantId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "userId",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Block User from Restaurant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ownerToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/owner/blocks/create/restaurant/{{restaurantId}}/user/{{userId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "owner", "blocks", "create", "restaurant", "{{restaurantId}}", "user", "{{userId}}"]
+				}
+			}
+		},
+		{
+			"name": "Unblock User from Restaurant",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ownerToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/owner/blocks/delete/restaurant/{{restaurantId}}/user/{{userId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "owner", "blocks", "delete", "restaurant", "{{restaurantId}}", "user", "{{userId}}"]
+				}
+			}
+		}
+	]
+}

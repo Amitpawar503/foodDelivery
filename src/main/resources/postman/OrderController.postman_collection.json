@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "order-controller-collection",
+		"name": "Order Controller",
+		"description": "API collection for Order management endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "customerToken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "ownerToken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "restaurantId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "mealId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "orderId",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Get My Orders - Basic",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{customerToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/orders/get",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "orders", "get"]
+				}
+			}
+		},
+		{
+			"name": "Get My Orders - With Pagination",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{customerToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/orders/get?page=0&size=10",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "orders", "get"],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Get My Orders - Filter by Status",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{customerToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/orders/get?status=PLACED&page=0&size=10",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "orders", "get"],
+					"query": [
+						{
+							"key": "status",
+							"value": "PLACED"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Get My Orders - Filter by Date Range",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{customerToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/orders/get?from=2024-01-01T00:00:00&to=2024-12-31T23:59:59&page=0&size=10",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "orders", "get"],
+					"query": [
+						{
+							"key": "from",
+							"value": "2024-01-01T00:00:00"
+						},
+						{
+							"key": "to",
+							"value": "2024-12-31T23:59:59"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Get Order by ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{customerToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/orders/get/{{orderId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "orders", "get", "{{orderId}}"]
+				}
+			}
+		},
+		{
+			"name": "Place Order - Basic",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{customerToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"restaurantId\": \"{{restaurantId}}\",\n  \"items\": [\n    {\n      \"mealId\": \"{{mealId}}\",\n      \"quantity\": 2\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/orders/create",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "orders", "create"]
+				}
+			}
+		},
+		{
+			"name": "Place Order - With Tip and Coupon",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{customerToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"restaurantId\": \"{{restaurantId}}\",\n  \"items\": [\n    {\n      \"mealId\": \"{{mealId}}\",\n      \"quantity\": 2\n    }\n  ],\n  \"tipAmount\": 3.00,\n  \"couponCode\": \"WELCOME20\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/orders/create",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "orders", "create"]
+				}
+			}
+		},
+		{
+			"name": "Update Order Status - Processing (Owner)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ownerToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"PROCESSING\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/orders/edit/status/{{orderId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "orders", "edit", "status", "{{orderId}}"]
+				}
+			}
+		},
+		{
+			"name": "Update Order Status - In Route (Owner)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ownerToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"IN_ROUTE\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/orders/edit/status/{{orderId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "orders", "edit", "status", "{{orderId}}"]
+				}
+			}
+		},
+		{
+			"name": "Update Order Status - Delivered (Owner)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ownerToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"DELIVERED\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/orders/edit/status/{{orderId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "orders", "edit", "status", "{{orderId}}"]
+				}
+			}
+		},
+		{
+			"name": "Update Order Status - Received (Customer)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{customerToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"RECEIVED\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/orders/edit/status/{{orderId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "orders", "edit", "status", "{{orderId}}"]
+				}
+			}
+		},
+		{
+			"name": "Cancel Order - Customer",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{customerToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"CANCELED\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/orders/edit/status/{{orderId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "orders", "edit", "status", "{{orderId}}"]
+				}
+			}
+		},
+		{
+			"name": "Cancel Order - Owner",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ownerToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"CANCELED\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/orders/edit/status/{{orderId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "orders", "edit", "status", "{{orderId}}"]
+				}
+			}
+		}
+	]
+}
